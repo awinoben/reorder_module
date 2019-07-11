@@ -17,7 +17,11 @@ defmodule ReorderModuleWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/users", UserController, only: [:create, :new]
+    resources "/registrations", UserController, only: [:create, :new]
+
+    get    "/login",  SessionController, :new
+    post   "/login",  SessionController, :create
+    delete "/logout", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

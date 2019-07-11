@@ -40,6 +40,7 @@ defmodule ReorderModuleWeb do
       import ReorderModuleWeb.Router.Helpers
       import ReorderModuleWeb.ErrorHelpers
       import ReorderModuleWeb.Gettext
+      import ReorderModule.Session, only: [current_user_id: 1, logged_in?: 1]
     end
   end
 
