@@ -5,11 +5,11 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <!--<div class="form-group">
     <%= label f, :name, class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
-  </div>
+  </div>-->
 
   <div class="form-group">
     <%= label f, :quantity, class: "control-label" %>
@@ -17,7 +17,7 @@
     <%= error_tag f, :quantity %>
   </div>
 
-  <div class="form-group">
+  <!--<div class="form-group">
     <%= label f, :reorder_level, class: "control-label" %>
     <%= number_input f, :reorder_level, class: "form-control" %>
     <%= error_tag f, :reorder_level %>
@@ -27,7 +27,7 @@
     <%= label f, :description, class: "control-label" %>
     <%= text_input f, :description, class: "form-control" %>
     <%= error_tag f, :description %>
-  </div>
+  </div>-->
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>

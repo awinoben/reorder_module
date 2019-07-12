@@ -9,41 +9,42 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-alias ReorderModule.Repo
+alias ReorderModule.Products
 alias ReorderModule.Products.Product
 album_data = [
   %{
     name: "productA",
     quantity: "50",
     reorder_level: "20",
-    description: "product description A..."
+    description: "dfghjkjjljbkvnbnmnnnndfgghhhjjkkhjhllll"
   },
   %{
     name: "productB",
     quantity: "50",
     reorder_level: "20",
-    description: "product description B..."
+    description: "dfghjkjjljbkvnbnmnnnndfgghhhjjjuuuk"
   },
   %{
     name: "productC",
     quantity: "50",
     reorder_level: "20",
-    description: "product description C..."
+    description: "dfghjkjjljbkvnbnmnnnndfgghhhjjjjkll"
   },
   %{
     name: "productD",
     quantity: "50",
     reorder_level: "20",
-    description: "product description D..."
+    description: "dfghjkjjljbkvnbnmnnnndfgghhhjjmmmnn"
   },
   %{
     name: "productE",
     quantity: "50",
     reorder_level: "20",
-    description: "product description E..."
+    description: "dfghjkjjljbkvnbnmnnnndfgghhhjjnnlllj"
   }
 ]
 
 Enum.each(album_data, fn(data) ->
-  Product.create_album!(data)
+  #Product.create_album!(data)
+  Products.create_product(data)
 end)

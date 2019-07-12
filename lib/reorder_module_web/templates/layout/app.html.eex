@@ -22,7 +22,8 @@
          <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
          <% else %>
           <!--<li><a href="http://localhost:4000/">Home</a></li>-->
-          <li><%= link "Products", to: product_path(@conn, :index) %></li>
+          <li><%= link "Store Actor", to: product_path(@conn, :index) %></li>
+          <li><%= link "WareHouse Actor", to: order_path(@conn, :index) %></li>
           <li><%= link "Sign In", to: session_path(@conn, :new) %></li>
           <li><%= link "Sign up", to: user_path(@conn, :new) %></li>
           <% end %>

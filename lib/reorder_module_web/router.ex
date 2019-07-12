@@ -19,6 +19,7 @@ defmodule ReorderModuleWeb.Router do
     get "/", PageController, :index
     resources "/registrations", UserController, only: [:create, :new]
     resources "/products", ProductController
+    resources "/orders", OrderController
 
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create

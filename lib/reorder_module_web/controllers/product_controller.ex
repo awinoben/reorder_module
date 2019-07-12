@@ -19,9 +19,9 @@ defmodule ReorderModuleWeb.ProductController do
       {:ok, product} ->
         conn
         |> put_flash(:info, "Product created successfully.")
-        |> redirect(to: product_path(conn, :show, product))
+        |> redirect(to: product_path(conn, :index, product))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "index.html", changeset: changeset)
     end
   end
 
@@ -58,9 +58,10 @@ defmodule ReorderModuleWeb.ProductController do
     |> redirect(to: product_path(conn, :index))
   end
 
-  plug :check_auth when action in [:new, :create, :edit, :update, :delete]
+ @moduledoc """
+ plug :check_auth when action in [:new, :create, :edit, :update, :delete]
 
-defp check_auth(conn, _args) do
+ defp check_auth(conn, _args) do
   if user_id = get_session(conn, :current_user_id) do
   current_user = Accounts.get_user!(user_id)
 
@@ -73,4 +74,5 @@ defp check_auth(conn, _args) do
     |> halt()
   end
 end
+ """
 end
