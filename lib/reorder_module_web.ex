@@ -33,6 +33,7 @@ defmodule ReorderModuleWeb do
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import ReorderModuleWeb.Helpers.Auth, only: [signed_in?: 1]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
@@ -40,7 +41,7 @@ defmodule ReorderModuleWeb do
       import ReorderModuleWeb.Router.Helpers
       import ReorderModuleWeb.ErrorHelpers
       import ReorderModuleWeb.Gettext
-      import ReorderModule.Session, only: [current_user_id: 1, logged_in?: 1]
+      #import ReorderModule.Session, only: [current_user_id: 1, logged_in?: 1]
     end
   end
 

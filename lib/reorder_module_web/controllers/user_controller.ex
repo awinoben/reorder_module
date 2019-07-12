@@ -3,6 +3,7 @@ defmodule ReorderModuleWeb.UserController do
 
   alias ReorderModule.Accounts
   alias ReorderModule.Accounts.User
+
 @moduledoc """
 def index(conn, _params) do
   users = Accounts.list_users()
@@ -20,10 +21,9 @@ end
       {:ok, user} ->
         conn
         |> put_flash(:info, "You have signed up successfully.")
-        |> redirect(to: user_path(conn, :show, user))
-        #|> put_session(:current_user_id, user.id)
+        |> redirect(to: product_path(conn, :index))
+        |> put_session(:current_user_id, user.id)
         #|> put_flash(:info, "Signed up successfully.")
-        # |> redirect(to: movie_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

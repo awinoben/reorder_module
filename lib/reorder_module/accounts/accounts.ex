@@ -101,4 +101,20 @@ defmodule ReorderModule.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  @doc """
+  Returns an nil users if no user and returns value when there is a user.
+
+  ## Examples
+
+      iex> change_user(user)
+      %Ecto.Changeset{source: %User{}}
+
+  """
+  def get_by_username(username) when is_nil(username) do
+  nil
+ end
+def get_by_username(username) do
+  Repo.get_by(User, username: username)
+end
 end

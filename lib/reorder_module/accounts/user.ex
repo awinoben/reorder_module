@@ -20,6 +20,6 @@ defmodule ReorderModule.Accounts.User do
     |> unique_constraint(:username)
     |> validate_required([:username, :encrypted_password])
     |> validate_length(:encrypted_password, min: 5)
-    # |> update_change(:encrypted_password, &Bcrypt.hashpwsalt/1)
+    |> update_change(:encrypted_password, &Bcrypt.hashpwsalt/1)
   end
 end
