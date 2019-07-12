@@ -4,6 +4,9 @@ defmodule ReorderModuleWeb.ProductController do
   alias ReorderModule.Products
   alias ReorderModule.Products.Product
 
+  #alias ReorderModule.Products
+  #alias ReorderModule.Products.Product
+
   def index(conn, _params) do
     products = Products.list_products()
     render(conn, "index.html", products: products)
@@ -49,6 +52,21 @@ defmodule ReorderModuleWeb.ProductController do
     end
   end
 
+  @moduledoc """
+  def update(conn, %{"id" => id, "product" => product_params}) do
+    product = Products.get_product!(id)
+
+    case Products.update_product(product, product_params) do
+      {:ok, product} ->
+        conn
+        |> put_flash(:info, "Product updated successfully.")
+        |> redirect(to: product_path(conn, :show, product))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", product: product, changeset: changeset)
+    end
+  end
+  """
+
   def delete(conn, %{"id" => id}) do
     product = Products.get_product!(id)
     {:ok, _product} = Products.delete_product(product)
@@ -57,6 +75,7 @@ defmodule ReorderModuleWeb.ProductController do
     |> put_flash(:info, "Product deleted successfully.")
     |> redirect(to: product_path(conn, :index))
   end
+
 
  @moduledoc """
  plug :check_auth when action in [:new, :create, :edit, :update, :delete]

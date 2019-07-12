@@ -8,6 +8,7 @@ defmodule ReorderModule.Products.Product do
     field :name, :string
     field :quantity, :integer
     field :reorder_level, :integer
+    has_many :orders, ReorderModule.Orders.Order
 
     timestamps()
   end
