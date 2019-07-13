@@ -23,6 +23,9 @@
   </li>
 
 </ul>
-
+<%= render ReorderModuleWeb.ReorderView, "new.html",
+                                conn: @conn,
+                                product: @product,
+                                reorder_changeset: @reorder_changeset %>
 <span><%= link "Edit", to: product_path(@conn, :edit, @product) %></span>
 <span><%= link "Back", to: product_path(@conn, :index) %></span>

@@ -1,5 +1,5 @@
 <h2>Make Sale</h2>
-
-<%= render "form.html", Map.put(assigns, :action, product_path(@conn, :update, @product)) %>
-
-<!--<span><%= link "Back", to: product_path(@conn, :index) %></span>-->
+<%= render  ReorderModuleWeb.ReorderView, "new.html",
+                                conn: @conn,
+                                product: @product,
+                                reorder_changeset: @reorder_changeset %>

@@ -1,18 +1,25 @@
 defmodule ReorderModuleWeb.ProductController do
   use ReorderModuleWeb, :controller
 
-  alias ReorderModule.Products
+  #alias ReorderModule.Products
   alias ReorderModule.Products.Product
+
+  #alias ReorderModule.Reorders
+  alias ReorderModule.Reorders.Reorder
+  #ReorderModule.{Products.Product, Reorders.Reorder}
+
+  alias ReorderModule.Repo
 
   def index(conn, _params) do
     products = Products.list_products()
     render(conn, "index.html", products: products)
   end
 
-  def new(conn, _params) do
-    changeset = Products.change_product(%Product{})
-    render(conn, "new.html", changeset: changeset)
-  end
+def new(conn, _params) do
+  changeset = Products.change_product(%Product{})
+  render(conn, "new.html", changeset: changeset)
+end
+
 
   def create(conn, %{"product" => product_params}) do
     case Products.create_product(product_params) do
@@ -24,10 +31,17 @@ defmodule ReorderModuleWeb.ProductController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+@moduledoc """
+def show(conn, %{"id" => id}) do
+  product = Products.get_product!(id)
+  render(conn, "show.html", product: product)
+end
+"""
 
   def show(conn, %{"id" => id}) do
-    product = Products.get_product!(id)
-    render(conn, "show.html", product: product)
+    product = Repo.get!(Product, id)
+    reorder_changeset = Reorder.changeset(%Reorder{})
+    render(conn, "show.html", product: product, reorder_changeset: reorder_changeset)
   end
 
   def edit(conn, %{"id" => id}) do

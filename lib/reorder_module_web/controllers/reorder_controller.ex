@@ -4,8 +4,10 @@ defmodule ReorderModuleWeb.ReorderController do
   alias ReorderModule.Reorders
   alias ReorderModule.Reorders.Reorder
 
-  alias ReorderModule.Products
+  #alias ReorderModule.Products
   alias ReorderModule.Products.Product
+
+  alias ReorderModule.Repo
 
   def index(conn, _params) do
     reorders = Reorders.list_reorders()
@@ -26,7 +28,7 @@ defmodule ReorderModuleWeb.ReorderController do
       #{:error, %Ecto.Changeset{} = changeset} ->
         #render(conn, "new.html", changeset: changeset)
     #end
-    product = Repo.get(Products, product_id)
+    product = Repo.get(Product, product_id)
     reorder_changeset = Ecto.build_assoc(product, :reorders, amount: reorder_params["amount"])
     Repo.insert(reorder_changeset)
 
@@ -53,7 +55,7 @@ defmodule ReorderModuleWeb.ReorderController do
       {:ok, reorder} ->
         conn
         |> put_flash(:info, "Reorder updated successfully.")
-        |> redirect(to: reorder_path(conn, :show, reorder))
+        |> redirect(to: product_reorder_path(conn, :show, reorder))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", reorder: reorder, changeset: changeset)
     end
@@ -65,6 +67,6 @@ defmodule ReorderModuleWeb.ReorderController do
 
     conn
     |> put_flash(:info, "Reorder deleted successfully.")
-    |> redirect(to: reorder_path(conn, :index))
+    |> redirect(to: product_reorder_path(conn, :index, reorder))
   end
 end
