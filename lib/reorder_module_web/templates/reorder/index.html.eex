@@ -1,0 +1,28 @@
+<h2>Listing Reorders</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for reorder <- @reorders do %>
+    <tr>
+      <td><%= reorder.amount %></td>
+      <td><%= reorder.status %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: reorder_path(@conn, :show, reorder), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: reorder_path(@conn, :edit, reorder), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: reorder_path(@conn, :delete, reorder), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Reorder", to: reorder_path(@conn, :new) %></span>

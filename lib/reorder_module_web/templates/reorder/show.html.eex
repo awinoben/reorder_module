@@ -1,0 +1,18 @@
+<h2>Show Reorder</h2>
+
+<ul>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @reorder.amount %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @reorder.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: reorder_path(@conn, :edit, @reorder) %></span>
+<span><%= link "Back", to: reorder_path(@conn, :index) %></span>

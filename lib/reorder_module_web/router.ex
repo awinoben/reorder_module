@@ -18,12 +18,15 @@ defmodule ReorderModuleWeb.Router do
 
     get "/", PageController, :index
     resources "/registrations", UserController, only: [:create, :new]
-    resources "/products", ProductController
     resources "/orders", OrderController
+    resources "/reorders", ReorderController
+
 
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
+
+    resources "/products", ProductController 
   end
 
   # Other scopes may use custom stacks.
