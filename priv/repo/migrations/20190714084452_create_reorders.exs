@@ -3,8 +3,8 @@ defmodule ReorderModule.Repo.Migrations.CreateReorders do
 
   def change do
     create table(:reorders) do
-      add :amount, :integer
-      add :status, :integer
+      add :amount, :string
+      add :status, :string
       add :product_id, references(:products, on_delete: :nothing)
 
       timestamps()

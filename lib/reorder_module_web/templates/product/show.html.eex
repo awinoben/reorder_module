@@ -1,4 +1,4 @@
-<h2>Show Product</h2>
+<h2>Product Details</h2>
 
 <ul>
 
@@ -27,5 +27,5 @@
                                 conn: @conn,
                                 product: @product,
                                 reorder_changeset: @reorder_changeset %>
-<span><%= link "Edit", to: product_path(@conn, :edit, @product) %></span>
+<!--<span><%= link "Edit", to: product_path(@conn, :edit, @product) %></span>-->
 <span><%= link "Back", to: product_path(@conn, :index) %></span>

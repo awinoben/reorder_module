@@ -4,17 +4,17 @@ defmodule ReorderModule.Reorders.Reorder do
 
 
   schema "reorders" do
-    field :amount, :integer
-    field :status, :integer
+    field :amount, :string
+    field :status, :string, default: 0
     field :product_id, :id
 
     timestamps()
   end
 
   @doc false
-  def changeset(reorder, attrs) do
+  def changeset(reorder, params \\ %{}) do
     reorder
-    |> cast(attrs, [:amount, :status])
+    |> cast(params, [:amount, :status])
     |> validate_required([:amount, :status])
   end
 end

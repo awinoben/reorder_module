@@ -1,10 +1,10 @@
 defmodule ReorderModuleWeb.ProductController do
   use ReorderModuleWeb, :controller
 
-  #alias ReorderModule.Products
+  alias ReorderModule.Products
   alias ReorderModule.Products.Product
 
-  #alias ReorderModule.Reorders
+  alias ReorderModule.Reorders
   alias ReorderModule.Reorders.Reorder
   #ReorderModule.{Products.Product, Reorders.Reorder}
 
@@ -12,7 +12,9 @@ defmodule ReorderModuleWeb.ProductController do
 
   def index(conn, _params) do
     products = Products.list_products()
-    render(conn, "index.html", products: products)
+    reorders = Reorders.list_reorders()
+    #render(conn, "index.html", products: products)
+    render(conn, "index.html", products: products, reorders: reorders)
   end
 
 def new(conn, _params) do
@@ -39,8 +41,11 @@ end
 """
 
   def show(conn, %{"id" => id}) do
-    product = Repo.get!(Product, id)
-    reorder_changeset = Reorder.changeset(%Reorder{})
+    #product = Repo.get!(Product, id)
+    product = Product
+           |> Repo.get(id)
+           |> Repo.preload(:reorders)
+    reorder_changeset = ReorderModule.Reorders.Reorder.changeset(%ReorderModule.Reorders.Reorder{})
     render(conn, "show.html", product: product, reorder_changeset: reorder_changeset)
   end
 

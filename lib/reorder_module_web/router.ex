@@ -21,7 +21,7 @@ defmodule ReorderModuleWeb.Router do
     resources "/orders", OrderController
 
     resources "/products", ProductController do
-    resources "/reorders", ReorderController, only: [:create]
+    resources "/reorders", ReorderController
 end
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create

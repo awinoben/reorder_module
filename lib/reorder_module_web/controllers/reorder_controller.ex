@@ -29,12 +29,12 @@ defmodule ReorderModuleWeb.ReorderController do
         #render(conn, "new.html", changeset: changeset)
     #end
     product = Repo.get(Product, product_id)
-    reorder_changeset = Ecto.build_assoc(product, :reorders, amount: reorder_params["amount"])
+    reorder_changeset = Ecto.build_assoc(product, :reorders, amount: reorder_params["amount"], status: reorder_params["status"])
     Repo.insert(reorder_changeset)
 
     conn
     |> put_flash(:info, "Reorder created successfully.")
-    |> redirect(to: product_path(conn, :index, product))
+    |> redirect(to: product_path(conn, :show, product))
   end
 
   def show(conn, %{"id" => id}) do

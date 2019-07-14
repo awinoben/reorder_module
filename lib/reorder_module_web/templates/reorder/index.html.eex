@@ -10,7 +10,8 @@
     </tr>
   </thead>
   <tbody>
-<%= for reorder <- @reorders do %>
+    
+ <%= for reorder <- @product.reorders do %>
     <tr>
       <td><%= reorder.amount %></td>
       <td><%= reorder.status %></td>
