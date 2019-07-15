@@ -20,10 +20,8 @@ defmodule ReorderModuleWeb.Router do
     resources "/registrations", UserController, only: [:create, :new]
     resources "/orders", OrderController
     resources "/warehouses", WarehouseController
-    resources "/stores", ReorderController, only: [:index]
-    resources "/products", ProductController do
+    resources "/products", ProductController
     resources "/reorders", ReorderController
-end
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete

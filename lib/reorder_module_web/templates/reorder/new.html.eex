@@ -1,7 +1,7 @@
 <h2>New Reorder</h2>
 
 
-<%= form_for @reorder_changeset, product_reorder_path(@conn, :create, @product), fn f -> %>
+<%= form_for @reorder_changeset, reorder_path(@conn, :create, @product), fn f -> %>
 <div class="form-group">
   <%= label f, :amount, class: "control-label" %>
   <%= number_input f, :amount, class: "form-control" %>

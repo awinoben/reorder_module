@@ -1,18 +1,34 @@
 defmodule ReorderModuleWeb.ReorderController do
   use ReorderModuleWeb, :controller
 
-  alias ReorderModule.Reorders
-  alias ReorderModule.Reorders.Reorder
-
   alias ReorderModule.Products
   alias ReorderModule.Products.Product
 
-  alias ReorderModule.Repo
+  alias ReorderModule.Reorders
+  alias ReorderModule.Reorders.Reorder
+  #ReorderModule.{Products.Product, Reorders.Reorder}
 
+  alias ReorderModule.Repo
+  import Ecto.Query
+
+  def processed do
+  query =  from p in Product,
+        join: r in Reorder, on: r.product_id == p.id,
+        select: [p.name, r.amount, r.status]
+  end
+@moduledoc """
+def unprocessed do
+query = from r in Reorder
+        |> where([r], r.status == ^0)
+        |> join(:left, r in Reorder, on: r.product_id == p.id)
+        |> preload([p, r], [reorders: r])
+        |> select([r], r)
+        #|> Repo.all
+end
+"""
   def index(conn, _params) do
-    reorders = Reorders.list_reorders()
-    products = Products.list_products()
-    render(conn, "index.html", reorders: reorders, products: products)
+    reorders = Repo.all(processed)
+    render(conn, "index.html", reorders: reorders)
   end
 
   def new(conn, _params) do
@@ -64,7 +80,7 @@ defmodule ReorderModuleWeb.ReorderController do
       {:ok, reorder} ->
         conn
         |> put_flash(:info, "Reorder updated successfully.")
-        |> redirect(to: product_reorder_path(conn, :show, reorder))
+        |> redirect(to: reorder_path(conn, :show, reorder))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", reorder: reorder, changeset: changeset)
     end
@@ -76,6 +92,6 @@ defmodule ReorderModuleWeb.ReorderController do
 
     conn
     |> put_flash(:info, "Reorder deleted successfully.")
-    |> redirect(to: product_reorder_path(conn, :index, reorder))
+    |> redirect(to: reorder_path(conn, :index, reorder))
   end
 end
