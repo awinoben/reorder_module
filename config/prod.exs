@@ -17,7 +17,7 @@ config :reorder_module, ReorderModuleWeb.Endpoint,
   load_from_system_env: true,
   # url: [host: "example.com", port: 80],
   url: [scheme: "https", host: "sleepy-escarpment-64829", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  #force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -43,8 +43,8 @@ config :logger, level: :info
 # We also recommend setting `force_ssl`, ensuring no data is
 # ever sent via http, always redirecting to https:
 #
-  config :reorder_module, ReorderModuleWeb.Endpoint,
-       force_ssl: [hsts: true]
+#  config :reorder_module, ReorderModuleWeb.Endpoint,
+#       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 
