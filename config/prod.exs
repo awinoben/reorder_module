@@ -43,7 +43,7 @@ config :logger, level: :info
 # We also recommend setting `force_ssl`, ensuring no data is
 # ever sent via http, always redirecting to https:
 #
-#    config :reorder_module, ReorderModuleWeb.Endpoint,
+  config :reorder_module, ReorderModuleWeb.Endpoint,
        force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
