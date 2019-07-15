@@ -1,0 +1,13 @@
+<h2>Show Warehouse</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @warehouse.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: warehouse_path(@conn, :edit, @warehouse) %></span>
+<span><%= link "Back", to: warehouse_path(@conn, :index) %></span>

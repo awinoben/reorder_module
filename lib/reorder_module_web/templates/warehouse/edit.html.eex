@@ -1,0 +1,5 @@
+<h2>Edit Warehouse</h2>
+
+<%= render "form.html", Map.put(assigns, :action, warehouse_path(@conn, :update, @warehouse)) %>
+
+<span><%= link "Back", to: warehouse_path(@conn, :index) %></span>

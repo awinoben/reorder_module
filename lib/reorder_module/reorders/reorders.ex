@@ -23,7 +23,6 @@ defmodule ReorderModule.Reorders do
 
   @doc """
   Gets a single reorder.
-
   Raises `Ecto.NoResultsError` if the Reorder does not exist.
 
   ## Examples

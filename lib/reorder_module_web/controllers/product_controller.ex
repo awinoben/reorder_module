@@ -9,11 +9,17 @@ defmodule ReorderModuleWeb.ProductController do
   #ReorderModule.{Products.Product, Reorders.Reorder}
 
   alias ReorderModule.Repo
+  import Ecto.Query
+
+  def query do
+  query =  from p in Product,
+        join: r in Reorder, on: r.product_id == p.id,
+        select: [p.name, r.amount, r.status] #|> where([r], r.status == ^0)
+end
 
   def index(conn, _params) do
     products = Products.list_products()
-    reorders = Reorders.list_reorders()
-    #render(conn, "index.html", products: products)
+    reorders = Repo.all(query)
     render(conn, "index.html", products: products, reorders: reorders)
   end
 

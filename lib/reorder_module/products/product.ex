@@ -14,7 +14,7 @@ defmodule ReorderModule.Products.Product do
   end
 
   @doc false
-  def changeset(product, attrs) do
+  def changeset(product, attrs \\ %{}) do
     product
     |> cast(attrs, [:name, :quantity, :reorder_level, :description])
     |> validate_required([:name, :quantity, :reorder_level, :description])

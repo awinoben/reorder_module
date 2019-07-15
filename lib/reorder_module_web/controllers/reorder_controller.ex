@@ -4,14 +4,15 @@ defmodule ReorderModuleWeb.ReorderController do
   alias ReorderModule.Reorders
   alias ReorderModule.Reorders.Reorder
 
-  #alias ReorderModule.Products
+  alias ReorderModule.Products
   alias ReorderModule.Products.Product
 
   alias ReorderModule.Repo
 
   def index(conn, _params) do
     reorders = Reorders.list_reorders()
-    render(conn, "index.html", reorders: reorders)
+    products = Products.list_products()
+    render(conn, "index.html", reorders: reorders, products: products)
   end
 
   def new(conn, _params) do
@@ -29,11 +30,19 @@ defmodule ReorderModuleWeb.ReorderController do
         #render(conn, "new.html", changeset: changeset)
     #end
     product = Repo.get(Product, product_id)
+
+    product_quantity = 50
+    product_level = 20
+    q_difference = (product_quantity)- 40
+    #product_changeset = Ecto.build_assoc(product, :products, quantity: q_difference )
     reorder_changeset = Ecto.build_assoc(product, :reorders, amount: reorder_params["amount"], status: reorder_params["status"])
-    Repo.insert(reorder_changeset)
+    #if(product_level== product_quantity || product_level> product_quantity) do
+      Repo.insert(reorder_changeset)
+      #Repo.update(product_changeset)
+    #end
 
     conn
-    |> put_flash(:info, "Reorder created successfully.")
+    |> put_flash(:info, "Sale made successfully.")
     |> redirect(to: product_path(conn, :show, product))
   end
 
