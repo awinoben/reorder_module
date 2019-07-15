@@ -14,4 +14,4 @@
 
 </ul>
 
-<span><%= link "Edit", to: reorder_path(@conn, :edit, @reorder) %></span>
+<span><%= link "Edit", to: product_reorder_path(@conn, :edit, @reorder) %></span>

@@ -80,7 +80,7 @@ end
       {:ok, reorder} ->
         conn
         |> put_flash(:info, "Reorder updated successfully.")
-        |> redirect(to: reorder_path(conn, :show, reorder))
+        |> redirect(to: product_reorder_path(conn, :show, reorder))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", reorder: reorder, changeset: changeset)
     end
@@ -92,6 +92,6 @@ end
 
     conn
     |> put_flash(:info, "Reorder deleted successfully.")
-    |> redirect(to: reorder_path(conn, :index, reorder))
+    |> redirect(to: product_reorder_path(conn, :index, reorder))
   end
 end
