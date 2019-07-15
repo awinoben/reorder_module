@@ -4,11 +4,11 @@ defmodule ReorderModuleWeb.WarehouseController do
   alias ReorderModule.Warehouses
   alias ReorderModule.Warehouses.Warehouse
 
-  alias ReorderModule.Products
-  alias ReorderModule.Products.Product
-  
   alias ReorderModule.Reorders
   alias ReorderModule.Reorders.Reorder
+
+  alias ReorderModule.Products
+  alias ReorderModule.Products.Product
 
   alias ReorderModule.Repo
   import Ecto.Query

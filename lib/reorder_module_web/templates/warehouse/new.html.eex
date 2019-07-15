@@ -1,4 +1,4 @@
-<h2>New Warehouse</h2>
+<h2>Dispatch</h2>
 
 <%= render "form.html", Map.put(assigns, :action, warehouse_path(@conn, :create)) %>
 

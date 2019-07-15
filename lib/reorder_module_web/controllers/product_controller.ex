@@ -14,7 +14,7 @@ defmodule ReorderModuleWeb.ProductController do
   def query do
   query =  from p in Product,
         join: r in Reorder, on: r.product_id == p.id,
-        select: [p.name, r.amount, r.status] #|> where([r], r.status == ^0)
+        select: [p.name, r.amount, r.status]
 end
 
   def index(conn, _params) do
