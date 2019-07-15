@@ -16,7 +16,7 @@ use Mix.Config
 config :reorder_module, ReorderModuleWeb.Endpoint,
   load_from_system_env: true,
   # url: [host: "example.com", port: 80],
-  url: [scheme: "https", host: "enigmatic-temple-56655", port: 443],
+  url: [scheme: "https", host: "vast-shelf-52248", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
