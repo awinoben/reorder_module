@@ -5,7 +5,6 @@
     <tr>
       <th>Product</th>
       <th>Quantity</th>
-      <th>Status</th>
 
       <th></th>
     </tr>
@@ -15,9 +14,8 @@
     <tr>
       <td><%= name %></td>
       <td><%= amount %></td>
-      <td><%= status %></td>
       <td class="text-right">
-        <span><%= link "Dispatch", to: warehouse_path(@conn, :new), class: "btn btn-success btn-lg-sm" %></span>
+        <span><a href="#" class="btn btn-success btn-lg-sm">Dispatch</a></span>
         <span><%#= link "Dispatch", to: warehouse_path(@conn, :update, @warehouses), class: "btn btn-success btn-lg-sm" %></span>
       </td>
     </tr>
@@ -32,7 +30,6 @@
     <tr>
       <th>Product</th>
       <th>Quantity</th>
-      <th>Status</th>
     </tr>
   </thead>
   <tbody>
@@ -40,7 +37,6 @@
       <tr>
         <td><%= name %></td>
         <td><%= amount %></td>
-        <td><%= status %></td>
       </tr>
 <% end %>
   </tbody>
