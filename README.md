@@ -37,10 +37,12 @@ Resources
     https://hexdocs.pm/phoenix/overview.html
 
 Applicant Section
-Hosted App Link: https://sleepy-escarpment-64829.herokuapp.com/
+
+   Hosted App Link: https://sleepy-escarpment-64829.herokuapp.com/
 
 
-Comments
- On the technical part, I experienced difficulties deploying my application to Heroku platform as it kept crashing and couldn't figure out some issues on the go. I managed to deploy the app successfully from Heroku CLI but on running the application URL, I encountered an error 'Application Error'. I would therefore, humbly request that you run the application from your local machine to see what I achieved.
+Comments:
 
- I would also like to state that I was not able to meet all the requirements as outlined above since it was my first time interacting with Elixir/Phoenix and limited time given to complete the task. I however promise to do well in the next assignments if given an opportunity to join your team of experts.
+   On the technical part, I experienced difficulties deploying my application to Heroku platform as it kept crashing and couldn't figure out some issues on the go. I managed to deploy the app successfully from Heroku CLI but on running the application URL, I encountered an error 'Application Error'. I would therefore, humbly request that you run the application from your local machine to see what I achieved.
+
+   I would also like to state that I was not able to meet all the requirements as outlined above since it was my first time interacting with Elixir/Phoenix and limited time given to complete the task. I however promise to do well in the next assignments if given an opportunity to join your team of experts.
