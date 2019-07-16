@@ -1,8 +1,6 @@
 defmodule ReorderModule.Repo do
-  use Ecto.Repo,
-  otp_app: :reorder_module,
-  adapter: Ecto.Adapters.Postgres
-
+  use Ecto.Repo, otp_app: :reorder_module
+  #alias Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the
